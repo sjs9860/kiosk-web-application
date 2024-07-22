@@ -1,7 +1,14 @@
 import os
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, jsonify
+from flask_cors import CORS
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder='public')
+CORS(app)
+
+@app.route('/api/data')
+def get_data():
+    data = {"message": "Hello from Flask!"}
+    return jsonify(data)
 
 # Serve Preact App
 @app.route('/', defaults={'path': ''})

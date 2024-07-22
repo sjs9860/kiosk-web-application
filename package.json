@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:preact && npm run copy:static",
+    "build": "npm run build:react && npm run copy:react:public",
     "build:preact": "cd preact-frontend && npm run build",
-    "copy:static": "cp -r preact-frontend/build/* static/"
+    "build:react": "cd react-frontend && npm run build",
+    "copy:preact:public": "cp -r preact-frontend/build/* public/",
+    "copy:react:public": "cp -r react-frontend/build/* public/"
   },
   "keywords": [],
   "author": "",
