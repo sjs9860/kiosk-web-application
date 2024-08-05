@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+import Button from "@mui/material/Button";
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
@@ -69,9 +70,15 @@ export default function Contact() {
 
         {contact.notes && <p>{contact.notes}</p>}
       </Stack>
-      <Stack direction="row" mt={2}>
+      <Stack direction="row" mt={2} gap={2}>
         <Form action="edit">
-          <button type="submit">Edit</button>
+          <Button
+            variant="outlined"
+            size="small"
+            type="submit"
+          >
+            Edit
+          </Button>
         </Form>
         <Form
           method="post"
@@ -86,7 +93,13 @@ export default function Contact() {
             }
           }}
         >
-          <button type="submit">Delete</button>
+          <Button
+            variant="outlined"
+            size="small"
+            type="submit"
+          >
+            Delete
+          </Button>
         </Form>
       </Stack>
     </>

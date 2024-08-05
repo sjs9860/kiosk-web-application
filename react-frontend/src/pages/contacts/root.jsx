@@ -140,7 +140,7 @@ export default function Root() {
         <ContactList contacts={contacts} />
       </Stack>
       <Box id="detail" flexGrow={1} sx={{ width: "100%" }}>
-        <Card id="contact" sx={{ height: '100%', width: '100%' }}>
+        <Card id="contact" sx={{ height: '100%', width: '100%', overflow: 'scroll' }}>
           <Outlet />
         </Card>
       </Box>

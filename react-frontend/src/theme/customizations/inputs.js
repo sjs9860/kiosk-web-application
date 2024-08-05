@@ -62,82 +62,82 @@ export const inputsCustomizations = {
       }),
     },
   },
-  MuiInputBase: {
-    styleOverrides: {
-      root: ({ theme }) => ({
-        border: 'none',
-        borderRadius: theme.shape.borderRadius,
-        [`&.${inputBaseClasses.focused}`]: {
-          outline: `3px solid ${alpha(brand[500], 0.5)}`,
-          borderColor: brand[400],
-        },
-      }),
-    },
-  },
-  MuiInputLabel: {
-    styleOverrides: {
-      root: {
-        variants: [
-          {
-            props: { variant: 'outlined' },
-            style: { transform: 'scale(0.75)', position: 'unset' },
-          },
-        ],
-      },
-    },
-  },
-  MuiOutlinedInput: {
-    styleOverrides: {
-      root: ({ theme }) => ({
-        color: theme.palette.text.primary,
-        borderRadius: theme.shape.borderRadius,
-        border: `1px solid ${theme.palette.divider}`,
-        transition: 'border 120ms ease-in',
-        '&:hover': {
-          borderColor: gray[400],
-        },
-        [`&.${outlinedInputClasses.focused}`]: {
-          outline: `3px solid ${alpha(brand[500], 0.5)}`,
-          borderColor: brand[400],
-        },
-        ...theme.applyStyles('dark', {
-          '&:hover': {
-            borderColor: gray[500],
-          },
-        }),
-        variants: [
-          {
-            props: {
-              size: 'small',
-            },
-            style: {
-              height: '2rem',
-              padding: '0 0.5rem',
-            },
-          },
-          {
-            props: {
-              size: 'medium',
-            },
-            style: {
-              height: '2.5rem',
-            },
-          },
-        ],
-      }),
-      notchedOutline: {
-        border: 'none',
-      },
-    },
-  },
-  MuiInputAdornment: {
-    styleOverrides: {
-      root: ({ theme }) => ({
-        color: theme.palette.grey[500],
-        ...theme.applyStyles('dark', {
-          color: theme.palette.grey[400],
-        }),
-      }),
-    },
-  },
+  // MuiInputBase: {
+  //   styleOverrides: {
+  //     root: ({ theme }) => ({
+  //       border: 'none',
+  //       borderRadius: theme.shape.borderRadius,
+  //       [`&.${inputBaseClasses.focused}`]: {
+  //         outline: `3px solid ${alpha(brand[500], 0.5)}`,
+  //         borderColor: brand[400],
+  //       },
+  //     }),
+  //   },
+  // },
+  // MuiInputLabel: {
+  //   styleOverrides: {
+  //     root: {
+  //       variants: [
+  //         {
+  //           props: { variant: 'outlined' },
+  //           style: { transform: 'scale(0.75)', position: 'unset' },
+  //         },
+  //       ],
+  //     },
+  //   },
+  // },
+  // MuiOutlinedInput: {
+  //   styleOverrides: {
+  //     root: ({ theme }) => ({
+  //       color: theme.palette.text.primary,
+  //       borderRadius: theme.shape.borderRadius,
+  //       border: `1px solid ${theme.palette.divider}`,
+  //       transition: 'border 120ms ease-in',
+  //       '&:hover': {
+  //         borderColor: gray[400],
+  //       },
+  //       [`&.${outlinedInputClasses.focused}`]: {
+  //         outline: `3px solid ${alpha(brand[500], 0.5)}`,
+  //         borderColor: brand[400],
+  //       },
+  //       ...theme.applyStyles('dark', {
+  //         '&:hover': {
+  //           borderColor: gray[500],
+  //         },
+  //       }),
+  //       variants: [
+  //         {
+  //           props: {
+  //             size: 'small',
+  //           },
+  //           style: {
+  //             height: '2rem',
+  //             padding: '0 0.5rem',
+  //           },
+  //         },
+  //         {
+  //           props: {
+  //             size: 'medium',
+  //           },
+  //           style: {
+  //             height: '2.5rem',
+  //           },
+  //         },
+  //       ],
+  //     }),
+  //     notchedOutline: {
+  //       border: 'none',
+  //     },
+  //   },
+  // },
+  // MuiInputAdornment: {
+  //   styleOverrides: {
+  //     root: ({ theme }) => ({
+  //       color: theme.palette.grey[500],
+  //       ...theme.applyStyles('dark', {
+  //         color: theme.palette.grey[400],
+  //       }),
+  //     }),
+  //   },
+  // },
 };

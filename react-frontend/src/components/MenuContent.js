@@ -18,6 +18,7 @@ import StarIcon from '@mui/icons-material/Star';
 import PeopleIcon from '@mui/icons-material/People';
 import GroupsIcon from '@mui/icons-material/Groups';
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
+import VideoChatIcon from '@mui/icons-material/VideoChat';
 
 import {
   Outlet,
@@ -33,7 +34,7 @@ const mainListItems = [
   {
     text: 'Checkup',
     icon: <MedicalInformationIcon />,
-    to: '',
+    to: '/checkups',
   },
   {
     text: 'Schedule',
@@ -44,6 +45,11 @@ const mainListItems = [
     text: 'Recipient',
     icon: <GroupsIcon />,
     to: '/contacts'
+  },
+  {
+    text: 'Chat',
+    icon: <VideoChatIcon />,
+    to: '/chats'
   },
 ];
 
@@ -59,7 +65,7 @@ export default function MenuContent({ contacts }) {
       <List dense>
         {mainListItems.map((item, index) => (
           <ListItem key={index} sx={{ display: 'block' }}>
-            <ListItemButton component={RouterNaviLink} selected={index === 0} to={item.to}>
+            <ListItemButton component={RouterNaviLink} to={item.to}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />{" "}
               {item.favorite && <ListItemIcon><StarIcon /></ListItemIcon>}

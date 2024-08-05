@@ -7,6 +7,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Root from './pages/root';
+import ScheduleRoot from "./pages/schedules/root";
+import CheckupRoot from "./pages/checkups/root";
+import ChatRoot from "./pages/chats/root";
 import ContactRoot, {
   loader as rootLoader,
   action as rootAction,
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Index />
+        element: <ErrorPage />
       },
       {
         path: "/contacts",
@@ -64,6 +67,18 @@ const router = createBrowserRouter([
           },
         ]
       },
+      {
+        path: "/schedules",
+        element: <ScheduleRoot />
+      },
+      {
+        path: "/checkups",
+        element: <CheckupRoot />
+      },
+      {
+        path: "/chats",
+        element: <ChatRoot />
+      },
     ]
   },
 ]);
@@ -79,21 +94,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>{data ? data : "Loading..."}</p>
-      </header> */}
       <RouterProvider router={router} />
     </div>
   );

@@ -10,9 +10,11 @@ import MenuButton from './MenuButton';
 import UserInfo from './UserInfo';
 
 import Search from './Search';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
 
 function Header({ pageTitle, q, mode, toggleColorMode }) {
+  const theme = useTheme();
   return (
     <Stack
       direction="row"
@@ -26,8 +28,8 @@ function Header({ pageTitle, q, mode, toggleColorMode }) {
       spacing={2}
     >
       {/* <NavbarBreadcrumbs /> */}
-      <Typography>RobotPi</Typography>
-      <Typography>{pageTitle}</Typography>
+      <Typography variant='h5'>RobotPi</Typography>
+      <Typography variant='h5' sx={{ color: theme.robotpi.darkFill}}>{pageTitle}</Typography>
       <Stack direction="row" sx={{ gap: 1 }}>
         {/* <Search q={q} /> */}
         {/* <CustomDatePicker /> */}
