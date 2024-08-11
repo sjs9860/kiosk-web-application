@@ -11,6 +11,7 @@ import Welcome from "./pages/welcome";
 import ScheduleRoot from "./pages/schedules/root";
 import CheckupRoot from "./pages/checkups/root";
 import ChatRoot from "./pages/chats/root";
+import SettingRoot from "./pages/settings/root";
 import ContactRoot, {
   loader as rootLoader,
   action as rootAction,
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/chats",
         element: <ChatRoot />
+      },
+      {
+        path: "/settings",
+        element: <SettingRoot />
       },
     ]
   },

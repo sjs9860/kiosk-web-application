@@ -12,12 +12,17 @@ import getDashboardTheme from '../theme/getDashboardTheme';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import SideMenu from '../components/SideMenu';
-import { mainListItems } from '../components/MenuContent';
+import { mainListItems, secondaryListItems } from '../components/MenuContent';
 
-const titleMap = mainListItems.reduce((acc, cur) => {
+let titleMap = mainListItems.reduce((acc, cur) => {
   acc[cur.to] = cur.text;
   return acc;
 }, {})
+
+titleMap = secondaryListItems.reduce((acc, cur) => {
+  acc[cur.to] = cur.text;
+  return acc;
+}, titleMap)
 
 export default function Root() {
   const [mode, setMode] = React.useState('light');

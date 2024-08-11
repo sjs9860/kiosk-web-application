@@ -53,8 +53,12 @@ export const mainListItems = [
   },
 ];
 
-const secondaryListItems = [
-  { text: 'Settings', icon: <SettingsRoundedIcon /> },
+export const secondaryListItems = [
+  {
+    text: 'Settings',
+    icon: <SettingsRoundedIcon />,
+    to: '/settings',
+  },
   // { text: 'About', icon: <InfoRoundedIcon /> },
   // { text: 'Feedback', icon: <HelpRoundedIcon /> },
 ];
@@ -77,7 +81,7 @@ export default function MenuContent({ contacts }) {
       <List dense>
         {secondaryListItems.map((item, index) => (
           <ListItem key={index} sx={{ display: 'block' }}>
-            <ListItemButton>
+            <ListItemButton component={RouterNaviLink} to={item.to}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
