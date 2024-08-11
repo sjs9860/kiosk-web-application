@@ -30,7 +30,7 @@ import {
   useSubmit,
 } from "react-router-dom";
 
-const mainListItems = [
+export const mainListItems = [
   {
     text: 'Checkup',
     icon: <MedicalInformationIcon />,

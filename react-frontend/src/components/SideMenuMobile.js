@@ -56,18 +56,18 @@ function SideMenuMobile({ contacts, q, open, toggleDrawer, mode, toggleColorMode
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
         </Stack>
         <Divider /> */}
-        <Search q={q} />
+        {/* <Search q={q} /> */}
         <Divider />
         <Stack sx={{ flexGrow: 1 }}>
           <MenuContent contacts={contacts} q={q}/>
           <Divider />
         </Stack>
         {/* <CardAlert /> */}
-        <Stack sx={{ p: 2 }}>
+        {/* <Stack sx={{ p: 2 }}>
           <Button variant="outlined" fullWidth startIcon={<LogoutRoundedIcon />}>
             Logout
           </Button>
-        </Stack>
+        </Stack> */}
       </Stack>
     </Drawer>
   );

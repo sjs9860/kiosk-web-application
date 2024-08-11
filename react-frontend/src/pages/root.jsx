@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {
   Outlet,
   useNavigation,
+  useLocation,
 } from "react-router-dom";
 import { createTheme, ThemeProvider, alpha } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,7 +12,12 @@ import getDashboardTheme from '../theme/getDashboardTheme';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import SideMenu from '../components/SideMenu';
+import { mainListItems } from '../components/MenuContent';
 
+const titleMap = mainListItems.reduce((acc, cur) => {
+  acc[cur.to] = cur.text;
+  return acc;
+}, {})
 
 export default function Root() {
   const [mode, setMode] = React.useState('light');
@@ -24,13 +30,19 @@ export default function Root() {
   const contacts = [];
   const q = '';
   const navigation = useNavigation();
+  const location = useLocation();
 
   return (
     <ThemeProvider theme={dashboardTheme}>
       <CssBaseline />
       <Box sx={{ display: 'flex' }}>
         <SideMenu contacts={contacts} q={q}/>
-        <Navbar contacts={contacts} q={q} mode={mode} toggleColorMode={toggleColorMode} />
+        <Navbar
+          contacts={contacts}
+          q={q}
+          mode={mode}
+          toggleColorMode={toggleColorMode}
+        />
         {/* Main content */}
         <Box
           component="main"
@@ -52,7 +64,7 @@ export default function Root() {
             }}
           >
             <Header
-              pageTitle={'Contacts'}
+              pageTitle={titleMap[location.pathname]}
               q={q}
               mode={mode}
               toggleColorMode={toggleColorMode}

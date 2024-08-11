@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Root from './pages/root';
+import Welcome from "./pages/welcome";
 import ScheduleRoot from "./pages/schedules/root";
 import CheckupRoot from "./pages/checkups/root";
 import ChatRoot from "./pages/chats/root";
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ErrorPage />
+        element: <Welcome />
       },
       {
         path: "/contacts",
@@ -86,11 +87,11 @@ const router = createBrowserRouter([
 function App() {
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch('/api/data')
-      .then((response) => response.json())
-      .then((data) => setData(data.message));
-  }, []);
+  // useEffect(() => {
+  //   fetch('/api/data')
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data.message));
+  // }, []);
 
   return (
     <div className="App">
