@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 import {
   Outlet,
   NavLink as RouterNaviLink,
@@ -65,7 +66,7 @@ function Contact(props) {
                 </Typography>
               </Box>
               <Box>
-                <Typography>
+                <Typography noWrap>
                   {timestamp}
                 </Typography>
               </Box>
@@ -103,7 +104,7 @@ function ContactList(props) {
             id={c.id}
             avatarImageSrc={c.avatar}
             name={c.first + ' ' + c.last}
-            timestamp={c.createdAt}
+            timestamp={format(new Date(c.createdAt), 'MM/dd hh:mm')}
             message={c.notes}
             description={c.twitter}
           />

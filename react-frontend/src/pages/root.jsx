@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Outlet,
   useNavigation,
@@ -25,7 +25,8 @@ titleMap = secondaryListItems.reduce((acc, cur) => {
 }, titleMap)
 
 export default function Root() {
-  const [mode, setMode] = React.useState('light');
+  const [title, setTitle] = useState('');
+  const [mode, setMode] = useState('light');
   const dashboardTheme = createTheme(getDashboardTheme(mode));
 
   const toggleColorMode = () => {
@@ -36,6 +37,13 @@ export default function Root() {
   const q = '';
   const navigation = useNavigation();
   const location = useLocation();
+  
+  useEffect(() => {
+    let tokens = location.pathname.split('/');
+    if (tokens.length > 1) {
+      setTitle(titleMap['/' + tokens[1]]);
+    }
+  }, [location.pathname])
 
   return (
     <ThemeProvider theme={dashboardTheme}>
@@ -69,7 +77,7 @@ export default function Root() {
             }}
           >
             <Header
-              pageTitle={titleMap[location.pathname]}
+              pageTitle={title}
               q={q}
               mode={mode}
               toggleColorMode={toggleColorMode}

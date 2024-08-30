@@ -20,10 +20,11 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Typography from "@mui/material/Typography";
 import RhfTextField from "../../components/data-form/TextField";
 import { updateContact } from "../../mock/contacts";
-import { Typography } from "@mui/material";
 
+import statesData from './constants/states.json';
 
 export async function action({ request, params }) {
   const formData = await request.formData();
@@ -48,10 +49,8 @@ export default function EditContact() {
     formState: { errors },
   } = useForm();
 
-  const [age, setAge] = useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleSelectChange = (name, value) => {
+    contact[name] = value;
   };
 
   return (
@@ -94,13 +93,15 @@ export default function EditContact() {
           {errors.last && <FormHelperText>Last name is required.</FormHelperText>}
         </Stack>
         <FormControl fullWidth sx={{ mt: 2, mb: 2 }}>
-          <InputLabel id="demo-simple-select-helper-label">Room</InputLabel>
+          <InputLabel id="room-helper-label">Room</InputLabel>
           <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            value={age}
-            label="Age"
-            onChange={handleChange}
+            labelId="room-helper-label"
+            id="room-helper"
+            name="room"
+            defaultValue={contact?.room}
+            value={contact?.room}
+            label="Room"
+            onChange={(event) => handleSelectChange('room', event.target.value)}
           >
             <MenuItem value="">
               <em>None</em>
@@ -119,7 +120,7 @@ export default function EditContact() {
             placeholder="First"
             label="First name"
             name="gfirst"
-            defaultValue={contact?.first}
+            defaultValue={contact?.gfirst}
             rules={{
               required: true,
             }}
@@ -134,7 +135,7 @@ export default function EditContact() {
             placeholder="Last"
             label="Last name"
             name="glast"
-            defaultValue={contact?.last}
+            defaultValue={contact?.glast}
             rules={{
               required: true,
             }}
@@ -151,7 +152,7 @@ export default function EditContact() {
             placeholder="Email"
             label="Email"
             name="gemail"
-            defaultValue={contact?.first}
+            defaultValue={contact?.gemail}
             rules={{
               required: true,
             }}
@@ -159,14 +160,14 @@ export default function EditContact() {
               flexGrow: 1
             }}
           />
-          {errors.first && <FormHelperText>First name is required.</FormHelperText>}
+          {errors.gemail && <FormHelperText>Email is required.</FormHelperText>}
           <TextField
             variant="outlined"
             control={control}
             placeholder="Phone Number"
             label="Phone Number"
             name="gpnumber"
-            defaultValue={contact?.last}
+            defaultValue={contact?.gpnumber}
             rules={{
               required: true,
             }}
@@ -174,7 +175,7 @@ export default function EditContact() {
               flexGrow: 1
             }}
           />
-          {errors.last && <FormHelperText>Last name is required.</FormHelperText>}
+          {errors.gpnumber && <FormHelperText>Phone number is required.</FormHelperText>}
         </Stack>
         <Stack direction="row" gap={2} sx={{mt:2}}>
           <TextField
@@ -183,7 +184,7 @@ export default function EditContact() {
             placeholder="Address1"
             label="Address1"
             name="gaddr1"
-            defaultValue={contact?.first}
+            defaultValue={contact?.gaddr1}
             rules={{
               required: true,
             }}
@@ -191,45 +192,37 @@ export default function EditContact() {
               flexGrow: 1
             }}
           />
-          {errors.first && <FormHelperText>First name is required.</FormHelperText>}
+          {errors.gaddr1 && <FormHelperText>Address is required.</FormHelperText>}
           <TextField
             variant="outlined"
             control={control}
             placeholder="Address2"
             label="Address2"
             name="gaddr2"
-            defaultValue={contact?.last}
-            rules={{
-              required: true,
-            }}
+            defaultValue={contact?.gaddr2}
             sx={{
               flexGrow: 1
             }}
           />
-          {errors.last && <FormHelperText>Last name is required.</FormHelperText>}
         </Stack>
         <Stack direction="row" gap={2} sx={{mt:2}}>
           <FormControl 
             sx={{
-              flexGrow: 1
+              flex: 1
             }}
           >
-            <InputLabel id="demo-simple-select-helper-label">State</InputLabel>
+            <InputLabel id="state-helper-label">State</InputLabel>
             <Select
-              labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
-              value={age}
-              label="Age"
-              onChange={handleChange}
+              labelId="state-helper-label"
+              id="state-helper"
+              name="gstate"
+              defaultValue={contact?.gstate}
+              label="State"
+              onChange={(event) => handleSelectChange('gstate', event.target.value)}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value=""></MenuItem>
+              {statesData.map(s => (<MenuItem value={s.name}>{s.abbreviation}</MenuItem>))}
             </Select>
-            {/* <FormHelperText>With label + helper text</FormHelperText> */}
           </FormControl>
           <TextField
             variant="outlined"
@@ -237,15 +230,16 @@ export default function EditContact() {
             placeholder="Zip Code"
             label="Zip Code"
             name="gzip"
-            defaultValue={contact?.last}
+            type="number"
+            defaultValue={contact?.gzip}
             rules={{
               required: true,
             }}
             sx={{
-              flexGrow: 1
+              flex: 1
             }}
           />
-          {errors.last && <FormHelperText>Last name is required.</FormHelperText>}
+          {errors.gzip && <FormHelperText>Zip code is required.</FormHelperText>}
         </Stack>
         <Stack direction="row" gap={2} sx={{ mt: 2, mb: 2}}>
           <Button
